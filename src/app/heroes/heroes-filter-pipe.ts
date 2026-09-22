@@ -6,11 +6,10 @@ import { IHeroes } from './heroes';
   standalone: false,
 })
 export class HeroesFilterPipe implements PipeTransform {
-  transform(value: IHeroes[], args:string):IHeroes[] {
+  transform(value:IHeroes[] , args: string): IHeroes[] {
     let filter:string=args?args.toLocaleLowerCase():'';
 
     return filter?value.filter((hero:IHeroes)=>
-    hero.nombre.toLocaleLowerCase().indexOf(filter)!==1):value;
-    
+      hero.nombre.toLocaleLowerCase().indexOf(filter)!==-1):value;
   }
 }
